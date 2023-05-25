@@ -27,13 +27,16 @@ function App() {
         setCurrentWeather({ city: searchData.label, ...weatherResponse });
         setForecast({ city: searchData.label, ...forcastResponse });
       })
-      .catch(console.log);
-  };
+      .catch((err) => console.log(err ));
+  }
+  console.log (currentWeather);
+  console.log(forecast);
   return (
     <div className="container">
-      <Search onSearchChange={handleOnSearchChange}/>  
-      <CurrentWeather/>   
-    </div>
+    <Search onSearchChange={handleOnSearchChange} />
+    {currentWeather && <CurrentWeather data={currentWeather} />}
+    
+  </div>
   );
 }
 
